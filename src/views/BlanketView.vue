@@ -1,21 +1,51 @@
 <template>
-  <div class="bg-[#FFF]">
+  <div class="bg-[#FFF] h-screen">
+    <button
+      @click="sidebar"
+      data-drawer-target="logo-sidebar"
+      data-drawer-toggle="logo-sidebar"
+      aria-controls="logo-sidebar"
+      type="button"
+      :class="bottonSidebar"
+      class="inline-flex md:hidden items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+    >
+      <span class="sr-only">Open sidebar</span>
+      <svg
+        class="w-6 h-6"
+        aria-hidden="true"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          clip-rule="evenodd"
+          fill-rule="evenodd"
+          d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
+        ></path>
+      </svg>
+    </button>
     <div
       id="logo-sidebar"
-      class="flex flex-col fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full md:translate-x-0"
+      :class="ClaseSidebar"
+      class="flex flex-col fixed top-0 left-0 z-40 w-64 h-screen md:translate-x-0 duration-300"
       aria-label="Sidebar"
     >
-      <div class="h-full px-3 py-4 overflow-y-auto bg-[#E3EDF5]">
-        <router-link to="/" class="flex items-center pl-2.5 mb-5">
-          <img
-            src="../assets/images/LogoMiranchito.png"
-            class="h-6 mr-3 md:h-7"
-          />
-        </router-link>
+      <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50">
+        <div class="flex grid-col-2 items-center pl-2.5 mb-5">
+          <router-link to="/" class="">
+            <img
+              src="../assets/images/LogoMiranchito.png"
+              class="h-6 mr-3 md:h-7"
+            />
+          </router-link>
+          <button href="" class="md:hidden pl-8" @click="sidebar">
+            <font-awesome-icon :icon="['fas', 'xmark']" size="xl" />
+          </button>
+        </div>
         <ul class="space-y-2">
-          <li>
-            <a
-              href="#"
+          <li @click="sidebar">
+            <router-link
+              to="/blanket/"
               class="flex items-center p-2 text-base font-semibold text-gray-900 rounded-lg hover:bg-gray-100"
             >
               <svg
@@ -27,9 +57,9 @@
                 <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
               </svg>
               <span class="ml-3">Inicio</span>
-            </a>
+            </router-link>
           </li>
-          <li>
+          <li @click="sidebar">
             <a
               href="#"
               class="flex items-center p-2 text-base font-semibold text-gray-900 rounded-lg hover:bg-gray-100"
@@ -47,7 +77,7 @@
               <span class="flex-1 ml-3 whitespace-nowrap">Ventas</span>
             </a>
           </li>
-          <li>
+          <li @click="sidebar">
             <a
               href="#"
               class="flex items-center p-2 text-base font-semibold text-gray-900 rounded-lg hover:bg-gray-100"
@@ -72,7 +102,7 @@
               >
             </a>
           </li>
-          <li>
+          <li @click="sidebar">
             <a
               href="#"
               class="flex items-center p-2 text-base font-semibold text-gray-900 rounded-lg hover:bg-gray-100"
@@ -91,7 +121,7 @@
               <span class="flex-1 ml-3 whitespace-nowrap">Clientes</span>
             </a>
           </li>
-          <li>
+          <li @click="sidebar">
             <router-link
               to="ver-productos"
               class="flex items-center p-2 text-base font-semibold text-gray-900 rounded-lg hover:bg-gray-100"
@@ -111,8 +141,7 @@
               <span class="flex-1 ml-3 whitespace-nowrap">Productos</span>
             </router-link>
           </li>
-
-          <li>
+          <li @click="sidebar">
             <router-link
               to="agregar-productos"
               class="flex items-center p-2 text-base font-semibold text-gray-900 rounded-lg hover:bg-gray-100"
@@ -147,6 +176,18 @@
 <script>
 import HomeComponent from "../components/general/HomeComponent.vue";
 export default {
+  data: () => ({
+    ClaseSidebar: "-translate-x-full",
+  }),
+  methods: {
+    sidebar() {
+      if (this.ClaseSidebar == "-translate-x-full") {
+        this.ClaseSidebar = "";
+      } else {
+        this.ClaseSidebar = "-translate-x-full";
+      }
+    },
+  },
   components: {
     HomeComponent,
   },
