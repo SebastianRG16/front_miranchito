@@ -14,12 +14,9 @@
             />
           </div>
           <div class="flex flex-col">
-            <p class="text-2xl font-bold text-gray-900">$ 3000</p>
-            <p class="">Total de productos</p>
+            <p class="text-2xl font-bold text-gray-900">300</p>
+            <p class="">Total productos</p>
           </div>
-          <!-- <p class="text-2xl text-gray-400 dark:text-gray-500">
-            total productos color #eb2226
-          </p> -->
         </div>
         <div
           class="flex items-center justify-center h-24 rounded bg-[#13318b] bg-opacity-50 grid-cols-2 gap-4"
@@ -38,18 +35,37 @@
           </div>
         </div>
         <div
-          class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800"
+          class="flex items-center justify-center h-24 rounded bg-[#c9873b] bg-opacity-50 grid-cols-2 gap-4"
         >
-          <p class="text-2xl text-gray-400 dark:text-gray-500">
-            Cantidad de clientes
-          </p>
+          <div class="flex">
+            <font-awesome-icon
+              :icon="['fas', 'users']"
+              size="xl"
+              style="color: #c9873b"
+              class="p-4"
+            />
+          </div>
+
+          <div class="flex flex-col">
+            <p class="text-2xl font-bold text-gray-900">20</p>
+            <p class="">Total clientes</p>
+          </div>
         </div>
         <div
-          class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800"
+          class="flex items-center justify-center h-24 rounded bg-[#2da942] bg-opacity-50 grid-cols-2 gap-4"
         >
-          <p class="text-2xl text-gray-400 dark:text-gray-500">
-            total ingresos
-          </p>
+          <div class="flex">
+            <font-awesome-icon
+              :icon="['fas', 'coins']"
+              size="xl"
+              style="color: #2da942"
+              class="p-4"
+            />
+          </div>
+          <div class="flex flex-col">
+            <p class="text-2xl font-bold text-gray-900">$210000</p>
+            <p class="">Total ingresos</p>
+          </div>
         </div>
       </div>
       <div
@@ -57,55 +73,6 @@
       >
         <p>Collapse de productos</p>
       </div>
-      <!-- <div class="grid grid-cols-2 gap-4 mb-4">
-        <div
-          class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-        >
-          <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-        </div>
-        <div
-          class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-        >
-          <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-        </div>
-        <div
-          class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-        >
-          <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-        </div>
-        <div
-          class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-        >
-          <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-        </div>
-      </div>
-      <div
-        class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800"
-      >
-        <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-      </div>
-      <div class="grid grid-cols-2 gap-4">
-        <div
-          class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-        >
-          <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-        </div>
-        <div
-          class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-        >
-          <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-        </div>
-        <div
-          class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-        >
-          <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-        </div>
-        <div
-          class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-        >
-          <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-        </div>
-      </div> -->
     </div>
   </div>
 </template>
