@@ -8,6 +8,7 @@
         <div class="relative z-0 w-full mb-6 group">
           <input
             v-model.trim="nombreArticulo"
+            required
             type="text"
             name="nombre_producto"
             id="nombre_producto"
@@ -24,6 +25,7 @@
           <div class="relative z-0 w-full mb-6 group">
             <input
               v-model.trim="precioArticulo"
+              required
               type="text"
               name="precio_producto"
               id="precio_producto"
@@ -39,6 +41,7 @@
           <div class="relative z-0 w-full mb-6 group">
             <input
               v-model.trim="cantidadArticulo"
+              required
               type="text"
               name="cantidad_producto"
               id="cantidad_producto"
@@ -59,10 +62,9 @@
           <input
             ref="fileInput"
             accept="image/*"
-            @change="FileChangue"
             class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
             aria-describedby="user_avatar_help"
-            id="user_avatar"
+            id="imgArchivo"
             type="file"
           />
         </div>
@@ -73,11 +75,12 @@
           >
             Registrar
           </button>
-          <button
-            class="text-base h-10 rounded-2xl text-[#FFFFFF] font-bold bg-[#0D2231] hover:bg-[#eb2226] duration-300"
+          <a
+            @click="limpiar()"
+            class="text-base h-10 pt-2 rounded-2xl text-[#FFFFFF] font-bold bg-[#0D2231] hover:bg-[#eb2226] cursor-pointer duration-300"
           >
             Cancelar
-          </button>
+          </a>
         </div>
       </form>
     </div>
@@ -89,51 +92,40 @@ import axios from "axios";
 
 export default {
   data: () => ({
-    errores: "",
+    msgerror: "",
     nombreArticulo: "",
     precioArticulo: "",
     cantidadArticulo: "",
     imagenArticulo: "",
   }),
   methods: {
-    async FileChangue(e) {
-      const formData = new FormData();
-      formData.append("image", this.$refs.fileInput.files[0]);
-      console.log(formData);
-      axios
-        .post("//localhost:3000/api/articulos", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        })
-        .then((response) => {
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-      // this.imagenArticulo = e.target.files[0];
-      // console.log(this.imagenArticulo);
+    limpiar() {
+      (this.nombreArticulo = ""),
+        (this.precioArticulo = ""),
+        (this.cantidadArticulo = ""),
+        (this.imagenArticulo = "");
     },
     async CrearProductos() {
       try {
-        // const formData = new FormData();
-        // formData.append("image", this.$refs.fileInput.files[0]);
-        const data = await axios({
-          method: "POST",
-          url: "//localhost:3000/api/articulos",
-          data: {
-            name: this.nombreArticulo,
-            precio: this.precioArticulo,
-            cantidad: this.cantidadArticulo,
-            imagen: this.imagenArticulo.name,
-          },
-        });
-        if (data) {
-          console.log();
-        }
+        const formData = new FormData();
+        formData.append("image", this.$refs.fileInput.files[0]);
+        formData.append("name", this.nombreArticulo);
+        formData.append("precio", this.precioArticulo);
+        formData.append("cantidad", this.cantidadArticulo);
+        await axios
+          .post("//localhost:3000/articulos", formData, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          })
+          .then((response) => {
+            console.log(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       } catch (error) {
-        this.errores = error;
+        console.log("error");
       }
     },
   },

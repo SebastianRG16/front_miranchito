@@ -1,7 +1,9 @@
 <template>
   <div class="h-full w-full">
     <div class="p-4 rounded-lg dark:border-gray-700">
-      <div class="grid grid-cols-1 gap-4 mb-4 md:grid-cols-2 xl:grid-cols-4">
+      <div
+        class="grid grid-cols-1 gap-4 mb-4 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-4"
+      >
         <div
           class="flex items-center justify-center h-24 rounded bg-[#eb2226] bg-opacity-50 grid-cols-2 gap-4"
         >
@@ -14,7 +16,9 @@
             />
           </div>
           <div class="flex flex-col">
-            <p class="text-2xl font-bold text-gray-900">300</p>
+            <p class="text-2xl font-bold text-gray-900">
+              {{ productos.length }}
+            </p>
             <p class="">Total productos</p>
           </div>
         </div>
@@ -69,16 +73,42 @@
         </div>
       </div>
       <div
-        class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50"
+        class="grid grid-cols-5 flex gap-4 flex items-center justify-center mb-4 rounded"
       >
-        <p>Collapse de productos</p>
+        <div
+          class="col-span-3 flex justify-center items-center bg-gray-50 h-48"
+        >
+          <p>Actividad reciente</p>
+        </div>
+        <div
+          class="col-span-2 flex justify-center items-center bg-gray-50 h-48"
+        >
+          <p>Lista de clientes</p>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import axios from "axios";
+
+export default {
+  data: () => ({
+    productos: [],
+  }),
+  created: async function () {
+    let url = "//localhost:3000/api/articulos";
+    await axios
+      .get(url)
+      .then(
+        (response) => (
+          (this.productos = response.data), console.log(response.data)
+        )
+      );
+  },
+  methods: {},
+};
 </script>
 
 <style></style>
