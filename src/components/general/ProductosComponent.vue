@@ -193,9 +193,7 @@ export default {
   created: async function () {
     let url = "//localhost:3000/api/articulos";
     await axios.get(url).then((response) => {
-      console.log(response.data.length);
       this.productos = response.data;
-      console.log(this.productos);
     });
   },
   methods: {
@@ -245,7 +243,6 @@ export default {
               this.cantidadGuardar = "";
               const input = document.getElementById("imageArchivo");
               input.value = "";
-              console.log(this.message);
               this.productosActualizados();
             } else {
               this.message =
@@ -253,14 +250,13 @@ export default {
             }
           })
           .catch((error) => {
-            console.log(error);
+            this.message = "Error consultando la base de datos";
           });
       } catch (error) {
-        console.log("error");
+        this.message = "Error consultando la base de datos";
       }
     },
     async eliminarProducto(posicion) {
-      console.log("eliminado producto");
       let url = `//localhost:3000/api/articulos/${posicion.id}`;
       await axios
         .delete(url)
@@ -268,10 +264,9 @@ export default {
           if (res.status === 204) {
             this.productosActualizados();
           }
-          console.log(res);
         })
         .catch((error) => {
-          console.log(error);
+          this.message = "Error eliminado el producto";
         });
     },
   },

@@ -103,8 +103,8 @@
             </a>
           </li>
           <li @click="sidebar">
-            <a
-              href="#"
+            <router-link
+              to="ver-clientes"
               class="flex items-center p-2 text-base font-semibold text-gray-900 rounded-lg hover:bg-gray-100"
             >
               <svg
@@ -119,7 +119,7 @@
                 ></path>
               </svg>
               <span class="flex-1 ml-3 whitespace-nowrap">Clientes</span>
-            </a>
+            </router-link>
           </li>
           <li @click="sidebar">
             <router-link

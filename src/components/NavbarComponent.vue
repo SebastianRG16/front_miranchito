@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="h-full px-3 py-4 overflow-y-auto bg-[#E3EDF5]">
     <router-link to="/" class="flex items-center pl-2.5 mb-5">
       <img src="../assets/images/LogoMiranchito.png" class="h-6 mr-3 sm:h-7" />
@@ -130,4 +130,4 @@
 export default {};
 </script>
 
-<style></style>
+<style></style> -->

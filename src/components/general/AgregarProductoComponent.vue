@@ -122,14 +122,13 @@ export default {
             console.log(response.data);
           })
           .catch((error) => {
-            console.log(error);
+            this.msgerror = "Error creando productos";
           });
       } catch (error) {
-        console.log("error");
+        this.msgerror = "Error creando productos";
       }
     },
   },
 };
 </script>
-
 <style></style>

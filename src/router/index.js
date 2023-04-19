@@ -24,6 +24,12 @@ const router = createRouter({
           component: () =>
             import("../components/general/AgregarProductoComponent.vue"),
         },
+        {
+          path: "ver-clientes",
+          name: "verClientes",
+          component: () =>
+            import("../components/general/ClientesComponent.vue"),
+        },
       ],
     },
     {
