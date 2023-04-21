@@ -3,14 +3,14 @@
     <div class="pl-6">
       <button
         @click="cambioVista()"
-        :class="estado"
+        :class="estado0"
         class="bg-transparent hover:bg-[#eb2226] text-[#eb2226] font-semibold hover:text-white py-1 px-10 border border-[#eb2226] hover:border-transparent rounded"
       >
         Agregar cliente
       </button>
     </div>
     <div
-      :class="estado"
+      :class="estado0"
       class="overflow-x-auto rounded-lg border border-gray-200 shadow-md m-5"
     >
       <table
@@ -138,9 +138,9 @@ import eliminarProducto from "../popus/eliminarCliente.vue";
 export default {
   data: () => ({
     estadoEditar: "hidden",
-    estado: "hidden",
+    estado0: "hidden",
     estado1: "hidden",
-    estado2: "",
+    estado2: "hidden",
     nombre: "",
     identificacion: "",
     telefono: "",
@@ -154,14 +154,18 @@ export default {
   }),
   created: async function () {
     let url = "//localhost:3000/clientes";
-    await axios.get(url).then((response) => {
-      this.clientes = response.data;
-      if (this.clientes.length < 1) {
-        this.clientesVacio();
-      } else {
-        this.estado = "";
-      }
-    });
+    try {
+      await axios.get(url).then((response) => {
+        this.clientes = response.data;
+        if (this.clientes.length < 1) {
+          this.clientesVacio();
+        } else {
+          this.estado0 = "";
+        }
+      });
+    } catch (error) {
+      this.clientesVacio();
+    }
   },
   components: {
     AgregarCliente,
@@ -187,22 +191,22 @@ export default {
       });
     },
     cambioVista() {
-      if (this.estado != "") {
-        this.estado = "";
+      if (this.estado0 != "") {
+        this.estado0 = "";
         this.estado1 = "hidden";
       } else {
-        this.estado = "hidden";
+        this.estado0 = "hidden";
         this.estado1 = "";
       }
     },
     clientesVacio() {
       if (this.clientes.length < 1) {
         this.estado1 = "hidden";
-        this.estado = "hidden";
+        this.estado0 = "hidden";
         this.estado2 = "";
       } else {
         this.estado1 = "hidden";
-        this.estado = "";
+        this.estado0 = "";
         this.estado2 = "hidden";
       }
     },
