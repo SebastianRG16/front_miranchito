@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full">
+  <div class="w-full h-full">
     <div class="pl-6">
       <button
         @click="cambioVista()"
@@ -81,6 +81,7 @@
               <div class="flex justify-end gap-4">
                 <a x-data="{ tooltip: 'Delete' }" href="#">
                   <font-awesome-icon
+                    @click="enviarEliminar(cliente)"
                     :icon="['fas', 'trash-can']"
                     class="hover:h-6"
                     size="xl"
@@ -89,6 +90,7 @@
                 </a>
                 <a x-data="{ tooltip: 'Edite' }" href="#">
                   <font-awesome-icon
+                    @click="editarCliente(cliente)"
                     class="hover:h-6"
                     :icon="['fas', 'pen-to-square']"
                     size="xl"
@@ -101,7 +103,23 @@
         </tbody>
       </table>
     </div>
-    <editarCliente :clientes="clientes" />
+    <eliminarProducto
+      :id="id"
+      v-on:eliminarCliente="eliminarCliente()"
+      :class="eliminar"
+    />
+    <editarCliente
+      :class="estadoEditar"
+      :nombre="nombre"
+      :identificacion="identificacion"
+      :telefono="telefono"
+      :correo="correo"
+      :ciudad="ciudad"
+      :estado="estado"
+      :id="id"
+      v-on:datosActualizados="datosActualizados()"
+    />
+    <!-- @datoNombre="nombre = $event" -->
     <alertaCliente v-on:primerCliente="primerCliente()" :class="estado2" />
     <AgregarCliente
       v-on:datosActualizados="datosActualizados()"
@@ -115,14 +133,24 @@ import axios from "axios";
 import AgregarCliente from "../popus/AgregarCliente.vue";
 import alertaCliente from "../popus/clienteAlerta.vue";
 import editarCliente from "../popus/EditarCliente.vue";
+import eliminarProducto from "../popus/eliminarCliente.vue";
 
 export default {
   data: () => ({
+    estadoEditar: "hidden",
     estado: "hidden",
     estado1: "hidden",
-    estado2: "hidden",
+    estado2: "",
+    nombre: "",
+    identificacion: "",
+    telefono: "",
+    correo: "",
+    ciudad: "",
+    estado: "",
+    id: "",
+    eliminar: "hidden",
     clientes: [],
-    clientess: [],
+    clientesEditar: [],
   }),
   created: async function () {
     let url = "//localhost:3000/clientes";
@@ -139,6 +167,7 @@ export default {
     AgregarCliente,
     alertaCliente,
     editarCliente,
+    eliminarProducto,
   },
   methods: {
     async datosActualizados() {
@@ -148,7 +177,12 @@ export default {
         if (this.clientes.length < 1) {
           this.clientesVacio();
         } else {
-          this.cambioVista();
+          console.log(this.estadoEditar);
+          if (this.estadoEditar == "") {
+            this.datosEditar();
+          } else {
+            this.cambioVista();
+          }
         }
       });
     },
@@ -175,6 +209,38 @@ export default {
     primerCliente() {
       this.estado2 = "hidden";
       this.estado1 = "";
+    },
+    editarCliente(cliente) {
+      this.nombre = cliente.nombre;
+      this.identificacion = cliente.identificacion;
+      this.telefono = cliente.contacto;
+      this.correo = cliente.email;
+      this.ciudad = cliente.ciudad;
+      this.estado = cliente.estado;
+      this.id = cliente.id_cliente;
+      if (this.estadoEditar == "") {
+        this.estadoEditar = "hidden";
+      } else {
+        this.estadoEditar = "";
+      }
+    },
+    datosEditar() {
+      if (this.estadoEditar == "") {
+        this.estadoEditar = "hidden";
+      } else {
+        this.estadoEditar = "";
+      }
+    },
+    enviarEliminar(cliente) {
+      this.id = cliente.id_cliente;
+      this.eliminar = "";
+    },
+    eliminarCliente() {
+      if (this.eliminar == "") {
+        this.eliminar = "hidden";
+      } else {
+        this.eliminar = "";
+      }
     },
   },
 };

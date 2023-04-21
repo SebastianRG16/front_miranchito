@@ -18,6 +18,7 @@
             Agregando cliente
           </h5>
           <button
+            @click="limpiar"
             type="button"
             class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
           >
@@ -173,6 +174,7 @@ export default {
     ciudad: "",
     estado: "",
     clientes: [],
+    msgerror: "",
   }),
   methods: {
     async agregarCliente() {

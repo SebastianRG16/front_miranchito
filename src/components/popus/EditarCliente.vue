@@ -19,7 +19,7 @@
             Estas editando informacion de un cliente
           </h5>
           <button
-            @click="ocultar"
+            @click="limpiar"
             type="button"
             class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
           >
@@ -90,7 +90,7 @@
             <div class="relative z-0 w-full mb-6 group">
               <p>Ciudad</p>
               <input
-                v-model.trim="identificacionGuardar"
+                v-model.trim="ciudadGuardar"
                 type="text"
                 name="precio_producto"
                 id="precio_producto"
@@ -101,7 +101,7 @@
             <div class="relative z-0 w-full mb-6 group">
               <p>Estado</p>
               <input
-                v-model.trim="telefonoGuardar"
+                v-model.trim="estadoGuardar"
                 type="text"
                 name="cantidad_producto"
                 id="cantidad_producto"
@@ -115,14 +115,14 @@
           class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4"
         >
           <button
-            @click="ocultar()"
+            @click="limpiar()"
             type="button"
             class="inline-block bg-[#0D2231] text-white rounded px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal transisiton duration-300 hover:text-[#eb2226]"
           >
             Cancelar
           </button>
           <button
-            @click="guardarCambios()"
+            @click="datosActualizar()"
             type="button"
             class="ml-1 bg-[#0D2231] inline-block rounded bg-primary px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white transition duration-300 hover:text-[#2da942]"
           >
@@ -135,16 +135,67 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-  data: () => {
-    cliente: [];
-  },
-  methods: {},
+  data: () => ({
+    nombreClienteGuardar: "",
+    identificacionGuardar: "",
+    telefonoGuardar: "",
+    correoGuardar: "",
+    ciudadGuardar: "",
+    estadoGuardar: "",
+    msgerror: "",
+    nombreProps: "",
+  }),
   props: {
-    clientes: Array,
+    nombre: String,
+    identificacion: "",
+    contacto: "",
+    telefono: "",
+    correo: "",
+    ciudad: "",
+    estado: "",
+    id: "",
   },
-  setup(props) {
-    console.log(props);
+  methods: {
+    async datosActualizar() {
+      try {
+        console.log(this.nombre);
+        await axios
+          .patch(`//localhost:3000/clientes/${this.id}`, {
+            nombre: this.nombreClienteGuardar,
+            identificacion: this.identificacionGuardar,
+            contacto: this.telefonoGuardar,
+            email: this.correoGuardar,
+            ciudad: this.ciudadGuardar,
+            estado: this.estadoGuardar,
+          })
+          .then((response) => {
+            if (response.status == 200) {
+              console.log("Modificado exitosamente");
+              this.limpiar();
+            }
+          })
+          .catch((error) => {
+            this.msgerror =
+              "Tuvimos un error con nuestro servidor, intentalo nuevamente o comunicate con el equipo de desarrollo";
+          });
+      } catch (error) {
+        this.msgerror =
+          "Tuvimos un error el enviar los datos, intentalo nuevamente o comunicate con el equipo de desarrollo";
+      }
+      // this.$emit("datoNombre", this.nombreClienteGuardar);
+    },
+    limpiar() {
+      this.nombreClienteGuardar = "";
+      this.identificacionGuardar = "";
+      this.telefonoGuardar = "";
+      this.correoGuardar = "";
+      this.ciudadGuardar = "";
+      this.estadoGuardar = "";
+      this.$emit("datosActualizados");
+    },
   },
 };
 </script>
