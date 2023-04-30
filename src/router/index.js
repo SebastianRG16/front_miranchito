@@ -30,6 +30,18 @@ const router = createRouter({
           component: () =>
             import("../components/general/ClientesComponent.vue"),
         },
+        {
+          path: "hacer-venta",
+          name: "hacerVenta",
+          component: () =>
+            import("../components/general/HacerVentaComponent.vue"),
+        },
+        {
+          path: "ver-venta",
+          name: "verVenta",
+          component: () =>
+            import("../components/general/verVentaComponent.vue"),
+        },
       ],
     },
     {

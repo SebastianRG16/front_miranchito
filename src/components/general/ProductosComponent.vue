@@ -17,7 +17,7 @@
               class="text-xl font-bold leading-normal text-neutral-800"
               id="exampleModalScrollableLabel"
             >
-              Estas editando informacion de un producto
+              Está editando información de un producto
             </h5>
             <button
               @click="ocultar"
@@ -50,7 +50,7 @@
               />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-              <p>Nombre del articulo</p>
+              <p>Nombre del artículo</p>
               <input
                 v-model.trim="nombreGuardar"
                 type="text"
@@ -133,7 +133,7 @@
             <img
               class="w-full 2xl:mb-5"
               :src="imgBase64 + producto.nombre"
-              alt="Sunset in the mountains"
+              alt=""
             />
           </div>
           <div class="py-4">

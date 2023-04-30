@@ -20,8 +20,8 @@
                 <p class=" flex flex-col font-serif text-7xl max-sm:text-6xl text-[#0D2231]">Lácteos <br> <P class="flex">Mi Ranchito</P></p>
                 <br>
                 <div class="flex pt-10 max-sm:pr-8">
-                  <p>Somos una empresa dedica a producir productos que estan hechos <br class="max-sm:hidden"> a base de leche en Mani-Casanare en donde todos los insumos 
-                    <br class="max-sm:hidden"> son producidos en nuestras finca</p>
+                  <p>Somos una empresa dedica a la producción, venta y distribución <br class="max-sm:hidden"> de lácteos y sus derivados, 
+                    <br class="max-sm:hidden"> directamente hechos y recolectados en nuestra finca</p>
                 </div>
                 </div>
               </div>

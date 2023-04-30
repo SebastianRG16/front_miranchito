@@ -22,10 +22,10 @@
               Nombre
             </th>
             <th scope="col" class="px-6 py-4 font-medium text-gray-900">
-              identificacion
+              Identificación
             </th>
             <th scope="col" class="px-6 py-4 font-medium text-gray-900">
-              contacto
+              Contacto
             </th>
             <th scope="col" class="px-6 py-4 font-medium text-gray-900">
               Estado
@@ -103,7 +103,7 @@
         </tbody>
       </table>
     </div>
-    <eliminarProducto
+    <eliminarCliente
       :id="id"
       v-on:eliminarCliente="eliminarCliente()"
       :class="eliminar"
@@ -133,7 +133,7 @@ import axios from "axios";
 import AgregarCliente from "../popus/AgregarCliente.vue";
 import alertaCliente from "../popus/clienteAlerta.vue";
 import editarCliente from "../popus/EditarCliente.vue";
-import eliminarProducto from "../popus/eliminarCliente.vue";
+import eliminarCliente from "../popus/eliminarCliente.vue";
 
 export default {
   data: () => ({
@@ -171,7 +171,7 @@ export default {
     AgregarCliente,
     alertaCliente,
     editarCliente,
-    eliminarProducto,
+    eliminarCliente,
   },
   methods: {
     async datosActualizados() {
@@ -239,7 +239,11 @@ export default {
       this.id = cliente.id_cliente;
       this.eliminar = "";
     },
-    eliminarCliente() {
+    async eliminarCliente() {
+      let url = "//localhost:3000/clientes";
+      await axios.get(url).then((response) => {
+        this.clientes = response.data;
+      });
       if (this.eliminar == "") {
         this.eliminar = "hidden";
       } else {

@@ -25,13 +25,13 @@
                       class="text-base font-semibold leading-6 text-gray-900"
                       id="modal-title"
                     >
-                      No hay ningun cliente agregado
+                      No hay ningún cliente agregado
                     </h3>
                     <div class="mt-2">
                       <p class="text-sm text-gray-500">
                         Debes agregar un cliente antes de poder visualizar el
-                        apartado de clientes, por favor selecciona la opcion
-                        agregar cliente a continuacion.
+                        apartado de clientes, por favor selecciona la opción
+                        agregar cliente a continuación.
                       </p>
                     </div>
                   </div>

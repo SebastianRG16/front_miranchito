@@ -18,7 +18,7 @@
           <label
             for="nombre_producto"
             class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#eb2226] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >Nombre del articulo</label
+            >Nombre del artículo</label
           >
         </div>
         <div class="grid mb-6 md:grid-cols-2 md:gap-6">
@@ -56,6 +56,27 @@
           </div>
         </div>
         <div class="mt-1 text-sm text-gray-500 mb-6" id="user_avatar_help">
+          <!-- <section class="h-full overflow-auto p-8 w-full h-full flex flex-col">
+            <header
+              class="border-dashed border-2 border-gray-400 py-12 flex flex-col justify-center items-center"
+            >
+              <p
+                class="mb-3 font-semibold text-gray-900 flex flex-wrap justify-center"
+              >
+                <span>Drag and drop your</span>&nbsp;<span
+                  >files anywhere or</span
+                >
+              </p>
+              <input accept="image/*" type="file" multiple class="hidden" />
+              Cargar imagen
+              <button
+                id="button"
+                class="mt-2 rounded-sm px-3 py-1 bg-gray-200 hover:bg-gray-300 focus:shadow-outline focus:outline-none"
+              >
+                Upload a file
+              </button>
+            </header>
+          </section> -->
           <p class="block mb-2 text-sm font-medium text-gray-900">
             Cargue la imagen del producto
           </p>

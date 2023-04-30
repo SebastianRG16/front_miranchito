@@ -69,7 +69,7 @@
               <label
                 for="identificacion_cliente"
                 class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#eb2226] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                >Identificacion</label
+                >Identificación</label
               >
             </div>
             <div class="relative z-0 w-full group">
@@ -85,7 +85,7 @@
               <label
                 for="telefono_cliente"
                 class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#eb2226] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                >Telefono</label
+                >Teléfono</label
               >
             </div>
           </div>
@@ -102,7 +102,7 @@
             <label
               for="correo_cliente"
               class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#eb2226] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-              >Correo electronico</label
+              >Correo electrónico</label
             >
           </div>
           <div class="grid mb-6 md:grid-cols-2 md:gap-6">

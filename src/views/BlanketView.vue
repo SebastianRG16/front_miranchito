@@ -60,8 +60,8 @@
             </router-link>
           </li>
           <li @click="sidebar">
-            <a
-              href="#"
+            <router-link
+              to="ver-venta"
               class="flex items-center p-2 text-base font-semibold text-gray-900 rounded-lg hover:bg-gray-100"
             >
               <svg
@@ -75,11 +75,11 @@
                 ></path>
               </svg>
               <span class="flex-1 ml-3 whitespace-nowrap">Ventas</span>
-            </a>
+            </router-link>
           </li>
           <li @click="sidebar">
-            <a
-              href="#"
+            <router-link
+              to="hacer-venta"
               class="flex items-center p-2 text-base font-semibold text-gray-900 rounded-lg hover:bg-gray-100"
             >
               <svg
@@ -96,11 +96,11 @@
                 ></path>
               </svg>
               <span class="flex-1 ml-3 whitespace-nowrap">Hacer venta</span>
-              <span
+              <!-- <span
                 class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300"
-                >3</span
-              >
-            </a>
+                >12</span
+              > -->
+            </router-link>
           </li>
           <li @click="sidebar">
             <router-link
@@ -174,7 +174,6 @@
 </template>
 
 <script>
-import HomeComponent from "../components/general/HomeComponent.vue";
 export default {
   data: () => ({
     ClaseSidebar: "-translate-x-full",
@@ -187,9 +186,6 @@ export default {
         this.ClaseSidebar = "-translate-x-full";
       }
     },
-  },
-  components: {
-    HomeComponent,
   },
 };
 </script>

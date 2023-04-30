@@ -16,7 +16,7 @@
             class="text-xl font-bold leading-normal text-neutral-800"
             id="exampleModalScrollableLabel"
           >
-            Estas editando informacion de un cliente
+            Está editando información de un cliente
           </h5>
           <button
             @click="limpiar"
@@ -53,7 +53,7 @@
           </div>
           <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-              <p>Identificacion</p>
+              <p>Identificación</p>
               <input
                 v-model.trim="identificacionGuardar"
                 type="text"
@@ -64,7 +64,7 @@
               />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-              <p>Telefono</p>
+              <p>Teléfono</p>
               <input
                 v-model.trim="telefonoGuardar"
                 type="text"
@@ -76,7 +76,7 @@
             </div>
           </div>
           <div class="relative z-0 w-full mb-6 group">
-            <p>Correo electronico</p>
+            <p>Correo electrónico</p>
             <input
               v-model.trim="correoGuardar"
               type="text"

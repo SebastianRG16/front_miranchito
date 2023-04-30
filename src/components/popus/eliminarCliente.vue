@@ -36,11 +36,13 @@
               clip-rule="evenodd"
             />
           </svg>
-          <h2 class="text-xl font-bold py-4">¿Estas seguro?</h2>
-          <p class="text-sm text-gray-500 px-8">
-            ¿Estas seguro que quieres eliminar este cliente? Este proceso no se
+          <h2 class="text-xl font-bold py-4">
+            ¿Está seguro? Este proceso no se puede deshacer
+          </h2>
+          <!-- <p class="text-sm text-gray-500 px-8">
+            ¿Esta seguro que quiere eliminar este cliente? Este proceso no se
             puede deshacer
-          </p>
+          </p> -->
         </div>
         <!--footer-->
         <div class="p-3 mt-2 text-center space-x-4 md:block">
