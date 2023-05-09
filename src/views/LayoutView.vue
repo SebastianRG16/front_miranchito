@@ -1,9 +1,8 @@
 <template>
-  <div class="bg-[#FFF]">
+  <div class="bg-[#FFF] dark:bg-gray-800">
     <div>
       <router-view />
     </div>
-    <div class="text-dark"></div>
   </div>
 </template>
 

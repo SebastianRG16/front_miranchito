@@ -11,26 +11,41 @@
     </div>
     <div
       :class="estado0"
-      class="overflow-x-auto rounded-lg border border-gray-200 shadow-md m-5"
+      class="overflow-x-auto rounded-lg border dark:border-gray-600 border-gray-200 shadow-md m-5"
     >
       <table
-        class="flex-col table-auto w-full border-collapse bg-white text-left text-sm text-gray-500"
+        class="flex-col table-auto w-full dark:bg-gray-800 border-collapse bg-white text-left text-sm text-gray-500"
       >
         <thead class="bg-gray-50">
-          <tr>
-            <th scope="col" class="px-6 py-4 font-medium text-gray-900">
+          <tr class="dark:bg-gray-700">
+            <th
+              scope="col"
+              class="px-6 py-4 font-medium text-gray-900 dark:text-white"
+            >
               Nombre
             </th>
-            <th scope="col" class="px-6 py-4 font-medium text-gray-900">
+            <th
+              scope="col"
+              class="px-6 py-4 font-medium text-gray-900 dark:text-white"
+            >
               Identificación
             </th>
-            <th scope="col" class="px-6 py-4 font-medium text-gray-900">
+            <th
+              scope="col"
+              class="px-6 py-4 font-medium text-gray-900 dark:text-white"
+            >
               Contacto
             </th>
-            <th scope="col" class="px-6 py-4 font-medium text-gray-900">
+            <th
+              scope="col"
+              class="px-6 py-4 font-medium text-gray-900 dark:text-white"
+            >
               Estado
             </th>
-            <th scope="col" class="px-6 py-4 font-medium text-gray-900">
+            <th
+              scope="col"
+              class="px-6 py-4 font-medium text-gray-900 dark:text-white"
+            >
               Ciudad
             </th>
             <th scope="col" class="px-6 py-4 font-medium text-gray-900"></th>
@@ -39,9 +54,9 @@
         <tbody
           v-for="(cliente, index) in clientes"
           :key="index"
-          class="divide-y divide-gray-100 border-t border-gray-100"
+          class="divide-y divide-gray-100 dark:border-gray-600 border-t border-gray-100"
         >
-          <tr class="hover:bg-gray-50">
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
             <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
               <!-- <div class="relative h-10 w-10">
                 <img
@@ -54,10 +69,12 @@
                 ></span>
               </div> -->
               <div class="text-sm">
-                <div class="font-medium text-gray-700">
+                <div class="font-medium text-gray-700 dark:text-slate-200">
                   {{ cliente.nombre }}
                 </div>
-                <div class="text-gray-400">{{ cliente.email }}</div>
+                <div class="text-gray-400 dark:text-slate-400">
+                  {{ cliente.email }}
+                </div>
               </div>
             </th>
             <td class="px-6 py-4">
@@ -67,7 +84,9 @@
                 {{ cliente.identificacion }}
               </div>
             </td>
-            <td class="px-6 py-4">{{ cliente.contacto }}</td>
+            <td class="px-6 py-4 dark:text-slate-200">
+              {{ cliente.contacto }}
+            </td>
             <td class="px-6 py-4">
               <span
                 class="inline-flex items-center gap-1 rounded-full bg-green-50 px-2 py-1 text-xs font-semibold text-green-600"
@@ -76,7 +95,7 @@
                 {{ cliente.estado }}
               </span>
             </td>
-            <td class="px-6 py-4">{{ cliente.ciudad }}</td>
+            <td class="px-6 py-4 dark:text-slate-200">{{ cliente.ciudad }}</td>
             <td class="px-6 py-4">
               <div class="flex justify-end gap-4">
                 <a x-data="{ tooltip: 'Delete' }" href="#">

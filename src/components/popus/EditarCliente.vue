@@ -10,10 +10,10 @@
         class="pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none transition duration-300"
       >
         <div
-          class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4"
+          class="flex flex-shrink-0 items-center justify-between dark:border-gray-500 rounded-t-md dark:bg-gray-700 border-b-2 border-neutral-100 border-opacity-100 p-4"
         >
           <h5
-            class="text-xl font-bold leading-normal text-neutral-800"
+            class="text-xl font-bold leading-normal text-neutral-800 dark:text-white"
             id="exampleModalScrollableLabel"
           >
             Está editando información de un cliente
@@ -39,80 +39,80 @@
             </svg>
           </button>
         </div>
-        <div class="relative p-4">
+        <div class="relative p-4 dark:bg-gray-700">
           <div class="relative z-0 w-full mb-6 group">
-            <p>Nombre del cliente</p>
+            <p class="dark:text-white">Nombre del cliente</p>
             <input
               v-model.trim="nombreClienteGuardar"
               type="text"
               name="nombre_producto"
               id="nombre_producto"
-              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#eb2226] peer"
+              class="block py-2.5 px-0 dark:text-slate-200 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#eb2226] peer"
               :placeholder="nombre"
             />
           </div>
           <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-              <p>Identificación</p>
+              <p class="dark:text-white">Identificación</p>
               <input
                 v-model.trim="identificacionGuardar"
                 type="text"
                 name="precio_producto"
                 id="precio_producto"
-                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#eb2226] peer"
+                class="block py-2.5 px-0 w-full dark:text-slate-200 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#eb2226] peer"
                 :placeholder="identificacion"
               />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-              <p>Teléfono</p>
+              <p class="dark:text-white">Teléfono</p>
               <input
                 v-model.trim="telefonoGuardar"
                 type="text"
                 name="cantidad_producto"
                 id="cantidad_producto"
-                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#eb2226] peer"
+                class="block py-2.5 px-0 w-full dark:text-slate-200 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#eb2226] peer"
                 :placeholder="telefono"
               />
             </div>
           </div>
           <div class="relative z-0 w-full mb-6 group">
-            <p>Correo electrónico</p>
+            <p class="dark:text-white">Correo electrónico</p>
             <input
               v-model.trim="correoGuardar"
               type="text"
               name="nombre_producto"
               id="nombre_producto"
-              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#eb2226] peer"
+              class="block py-2.5 px-0 dark:text-slate-200 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#eb2226] peer"
               :placeholder="correo"
             />
           </div>
           <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-              <p>Ciudad</p>
+              <p class="dark:text-white">Ciudad</p>
               <input
                 v-model.trim="ciudadGuardar"
                 type="text"
                 name="precio_producto"
                 id="precio_producto"
-                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#eb2226] peer"
+                class="block py-2.5 px-0 dark:text-slate-200 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#eb2226] peer"
                 :placeholder="ciudad"
               />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-              <p>Estado</p>
+              <p class="dark:text-white">Estado</p>
               <input
                 v-model.trim="estadoGuardar"
                 type="text"
                 name="cantidad_producto"
                 id="cantidad_producto"
-                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#eb2226] peer"
+                class="block py-2.5 px-0 dark:text-slate-200 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#eb2226] peer"
                 :placeholder="estado"
               />
             </div>
           </div>
         </div>
         <div
-          class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4"
+          class="flex flex-shrink-0 dark:bg-gray-700 dark:border-gray-600 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4"
         >
           <button
             @click="limpiar()"

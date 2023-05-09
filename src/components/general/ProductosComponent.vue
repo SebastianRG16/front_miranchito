@@ -1,20 +1,20 @@
 <template>
-  <div>
+  <div class="h-full">
     <div
       :class="modalEditar"
-      class="fixed top-10 left-0 z-[1055] h-full w-full overflow-y-auto overflow-x-hidden outline-none transition duration-300"
+      class="fixed h-full top-10 left-0 z-[1055] h-full w-full overflow-y-auto overflow-x-hidden outline-none transition duration-300"
     >
       <div
         class="pointer-events-none relative flex min-h-[calc(100%-1rem)] w-auto translate-y-[-50px] items-center transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:min-h-[calc(100%-3.5rem)] min-[576px]:max-w-[500px]"
       >
         <div
-          class="pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none transition duration-300"
+          class="pointer-events-auto relative flex w-full flex-col rounded-md border-none dark:bg-gray-700 bg-white bg-clip-padding text-current shadow-lg outline-none transition duration-300"
         >
           <div
-            class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4"
+            class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 dark:border-gray-600 border-neutral-100 border-opacity-100 p-4"
           >
             <h5
-              class="text-xl font-bold leading-normal text-neutral-800"
+              class="text-xl font-bold leading-normal text-neutral-800 dark:text-white"
               id="exampleModalScrollableLabel"
             >
               Está editando información de un producto
@@ -50,42 +50,44 @@
               />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-              <p>Nombre del artículo</p>
+              <p class="dark:text-white">Nombre del artículo</p>
               <input
                 v-model.trim="nombreGuardar"
                 type="text"
                 name="nombre_producto"
                 id="nombre_producto"
-                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#eb2226] peer"
+                class="block py-2.5 px-0 w-full dark:text-white text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#eb2226] peer"
                 :placeholder="nombre"
               />
             </div>
             <div class="grid md:grid-cols-2 md:gap-6">
               <div class="relative z-0 w-full mb-6 group">
-                <p>Precio</p>
+                <p class="dark:text-white">Precio</p>
                 <input
                   v-model.trim="precioGuardar"
                   type="text"
                   name="precio_producto"
                   id="precio_producto"
-                  class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#eb2226] peer"
+                  class="block py-2.5 px-0 dark:text-white w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#eb2226] peer"
                   :placeholder="precio"
                 />
               </div>
               <div class="relative z-0 w-full mb-6 group">
-                <p>Cantidad</p>
+                <p class="dark:text-white">Cantidad</p>
                 <input
                   v-model.trim="cantidadGuardar"
                   type="text"
                   name="cantidad_producto"
                   id="cantidad_producto"
-                  class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#eb2226] peer"
+                  class="block py-2.5 px-0 dark:text-white w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#eb2226] peer"
                   :placeholder="cantidad"
                 />
               </div>
             </div>
             <div class="mt-1 text-sm text-gray-500" id="user_avatar_help">
-              <p class="block mb-2 text-sm font-medium text-gray-900">
+              <p
+                class="dark:text-white block mb-2 text-sm font-medium text-gray-900"
+              >
                 Cargue la imagen del producto
               </p>
               <input
@@ -121,36 +123,46 @@
     </div>
     <div
       :class="opaco"
-      class="w-full flex grid gap-4 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 place-items-stretch justify-center items-center"
+      class="w-full flex grid gap-4 grid-cols-2 max-sm:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-3 place-items-stretch justify-center items-center"
     >
       <div
         v-for="(producto, index) in productos"
         :key="index"
-        class="flex mb-5 items-center justify-center"
+        class="flex mb-5 rounded items-center justify-center"
       >
-        <div class="max-w-sm rounded overflow-hidden shadow-lg p-8">
-          <div class="flex h-[200px] items-center justify-center">
+        <div
+          class="max-w-sm rounded dark:bg-gray-700 overflow-hidden shadow-lg p-8 max-sm:p-2"
+        >
+          <div
+            class="flex h-[200px] max-sm:h-[100px] min-[480px]:h-[150px] sm:h-[200px] max-[300px]:h-[60px] items-center justify-center"
+          >
             <img
               class="w-full 2xl:mb-5"
               :src="imgBase64 + producto.nombre"
               alt=""
             />
           </div>
-          <div class="py-4">
-            <div class="font-bold text-lg mb-2">{{ producto.name }}</div>
+          <div class="py-4 max-[300px]:py-2">
+            <div
+              class="font-bold max-[300px]:text-sm text-lg mb-2 max-[300px]:mb-0 dark:text-white"
+            >
+              {{ producto.name }}
+            </div>
           </div>
           <div class="flex items-center justify-between">
-            <span class="text-2xl font-bold text-gray-900"
-              >${{ producto.precio }}</span
+            <span
+              class="text-2xl max-[300px]:text-lg font-bold text-gray-900 dark:text-slate-200"
+              >${{ formatoMexico(producto.precio) }}</span
             >
-            <div class="space-x-4">
-              <button class="cursor-pointer transition duration-300">
+            <div class="space-x-4 max-[300px]:space-x-0">
+              <button
+                class="cursor-pointer text-[#13318b] transition duration-300"
+              >
                 <font-awesome-icon
                   @click="editar(producto)"
                   class="hover:h-6"
                   :icon="['fas', 'pen-to-square']"
                   size="lg"
-                  style="color: #13318b"
                 />
               </button>
               <button class="cursor-pointer transition duration-300">
@@ -268,6 +280,13 @@ export default {
         .catch((error) => {
           this.message = "Error eliminado el producto";
         });
+    },
+    formatoMexico(number) {
+      const exp = /(\d)(?=(\d{3})+(?!\d))/g;
+      const rep = "$1.";
+      let arr = number.toString().split(".");
+      arr[0] = arr[0].replace(exp, rep);
+      return arr[1] ? arr.join(".") : arr[0];
     },
   },
 };

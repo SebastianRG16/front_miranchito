@@ -1,17 +1,26 @@
 <template>
   <div>
     <table
-      class="flex-col table-auto w-full border-collapse bg-white text-left text-sm text-gray-500"
+      class="flex-col table-auto w-full border-collapse bg-white dark:bg-gray-700 text-left text-sm text-gray-500"
     >
       <thead class="bg-gray-50">
-        <tr>
-          <th scope="col" class="px-6 py-4 font-medium text-gray-900">
+        <tr class="dark:bg-gray-700">
+          <th
+            scope="col"
+            class="px-6 py-4 font-medium text-gray-900 dark:text-white"
+          >
             Producto
           </th>
-          <th scope="col" class="px-6 py-4 font-medium text-gray-900">
+          <th
+            scope="col"
+            class="px-6 py-4 font-medium text-gray-900 dark:text-white"
+          >
             Precio
           </th>
-          <th scope="col" class="px-6 py-4 font-medium text-gray-900">
+          <th
+            scope="col"
+            class="px-6 py-4 font-medium text-gray-900 dark:text-white"
+          >
             Cantidad
           </th>
           <th
@@ -23,9 +32,9 @@
       <tbody
         v-for="(producto, index) in productos"
         :key="index"
-        class="divide-y divide-gray-100 border-t border-gray-100"
+        class="divide-y dark:bg-gray-800 dark:border-gray-600 divide-gray-100 border-t border-gray-100"
       >
-        <tr class="hover:bg-gray-50">
+        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
           <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
             <div class="relative h-10 w-10">
               <img
@@ -38,7 +47,9 @@
               ></span>
             </div>
             <div class="text-sm inline-flex items-center">
-              <div class="font-medium text-lg text-gray-700">
+              <div
+                class="font-medium text-lg text-gray-700 dark:text-slate-200"
+              >
                 {{ producto.name }}
               </div>
             </div>
@@ -47,10 +58,10 @@
             <div
               class="inline-flex text-md items-center gap-1 rounded-full bg-blue-50 px-2 py-1 font-semibold text-blue-600"
             >
-              $ {{ producto.precio }}
+              $ {{ formatoMexico(producto.precio) }}
             </div>
           </td>
-          <td class="px-6 py-4 text-lg">
+          <td class="px-6 py-4 text-lg dark:text-slate-200">
             {{ totalProductos[index].cantidad }}
           </td>
           <td class="px-6 py-4 flex">
@@ -116,6 +127,13 @@ export default {
     agregarProduc(producto) {
       this.ventaProducto = producto;
       this.$emit("recibirProducto", this.ventaProducto);
+    },
+    formatoMexico(number) {
+      const exp = /(\d)(?=(\d{3})+(?!\d))/g;
+      const rep = "$1.";
+      let arr = number.toString().split(".");
+      arr[0] = arr[0].replace(exp, rep);
+      return arr[1] ? arr.join(".") : arr[0];
     },
   },
 };

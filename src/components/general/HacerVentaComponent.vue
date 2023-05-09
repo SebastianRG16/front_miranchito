@@ -1,7 +1,7 @@
 <template>
   <div class="w-full h-full">
     <div class="px-5">
-      <p class="text-3xl font-semibold mb-5">Nueva venta</p>
+      <p class="text-3xl font-semibold mb-5 dark:text-white">Nueva venta</p>
       <div class="mb-5 grid grid-cols-2 flex w-full" v-if="venta.length >= 1">
         <div class="">
           <button
@@ -60,32 +60,46 @@
           </button>
         </div>
       </div>
-      <p class="mb-5 text-2xl">Total: $ {{ valorTotal }}</p>
+      <p class="mb-5 text-2xl dark:text-white">
+        Total: $ {{ formatoMexico(valorTotal) }}
+      </p>
     </div>
     <div
-      class="overflow-x-auto transition-300 rounded-lg border border-gray-200 shadow-md m-5"
+      class="overflow-x-auto transition-300 rounded-lg border dark:border-gray-600 border-gray-200 shadow-md m-5"
     >
       <table
         :class="vistaPrincipal"
-        class="flex-col table-auto w-full border-collapse bg-white text-left text-sm text-gray-500"
+        class="flex-col table-auto w-full dark:bg-gray-800 border-collapses bg-white text-left text-sm text-gray-500"
       >
         <thead class="bg-gray-50">
-          <tr>
-            <th scope="col" class="px-6 py-4 font-medium text-gray-900">
+          <tr class="dark:bg-gray-700">
+            <th
+              scope="col"
+              class="px-6 py-4 font-medium text-gray-900 dark:text-white"
+            >
               Id de producto
             </th>
-            <th scope="col" class="px-6 py-4 font-medium text-gray-900">
+            <th
+              scope="col"
+              class="px-6 py-4 font-medium text-gray-900 dark:text-white"
+            >
               Descripcion
             </th>
-            <th scope="col" class="px-6 py-4 font-medium text-gray-900">
+            <th
+              scope="col"
+              class="px-6 py-4 font-medium text-gray-900 dark:text-white"
+            >
               Precio
             </th>
-            <th scope="col" class="px-6 py-4 font-medium text-gray-900">
+            <th
+              scope="col"
+              class="px-6 py-4 font-medium text-gray-900 dark:text-white"
+            >
               Cantidad
             </th>
             <th
               scope="col"
-              class="flex justify-center px-6 py-4 font-medium text-gray-900"
+              class="flex justify-center px-6 py-4 font-medium text-gray-900 dark:text-white"
             >
               Retirar
             </th>
@@ -94,12 +108,14 @@
         <tbody
           v-for="(ventas, index) in venta"
           :key="index"
-          class="divide-y divide-gray-100 border-t border-gray-100"
+          class="divide-y divide-gray-100 border-t dark:border-gray-600 border-gray-100"
         >
-          <tr class="hover:bg-gray-50">
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
             <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
               <div class="text-sm">
-                <div class="font-medium text-gray-700">{{ ventas.id }}</div>
+                <div class="font-medium text-gray-700 dark:text-slate-200">
+                  {{ ventas.id }}
+                </div>
               </div>
             </th>
             <td class="px-6 py-4">
@@ -109,7 +125,7 @@
                 {{ ventas.name }}
               </div>
             </td>
-            <td class="px-6 py-4">{{ ventas.precio }}</td>
+            <td class="px-6 py-4 dark:text-slate-200">{{ ventas.precio }}</td>
             <td class="px-6 py-4">
               <span
                 class="inline-flex items-center gap-1 rounded-full bg-green-50 px-2 py-1 text-xs font-semibold text-green-600"
@@ -135,16 +151,12 @@
       </table>
       <ElegirProducto @recibirProducto="recibirProducto" :class="agProducto" />
     </div>
-    <!-- <div class="px-5">
-      <PruebasComponente />
-    </div> -->
   </div>
 </template>
 
 <script>
 import axios from "axios";
 
-import PruebasComponente from "../vistasVentas/PruebasComponente.vue";
 import ElegirProducto from "../vistasVentas/ElegirProducto.vue";
 export default {
   data: () => ({
@@ -190,10 +202,17 @@ export default {
     async hacerVenta() {
       let today = new Date();
       let fechaActual = today.toLocaleString();
-      this.ultimoId_venta =
-        this.ultimoIdVenta[this.ultimoIdVenta.length - 1].id_venta;
+      console.log("esto es venta", this.ultimoId_venta);
+      console.log(this.ultimoIdVenta);
+      if (this.ultimoIdVenta.length == 0) {
+        this.ultimoId_venta = 0;
+      } else {
+        this.ultimoId_venta =
+          this.ultimoIdVenta[this.ultimoIdVenta.length - 1].id_venta;
+      }
       // console.log(this.ultimoId_venta + 1);
       try {
+        console.log("esto es venta", this.ultimoId_venta);
         for (let index = 0; index < this.venta.length; index++) {
           // console.log(this.ultimoId_venta + 1);
           // console.log(fechaActual);
@@ -235,9 +254,15 @@ export default {
       this.restarTotal = this.venta.splice(productoEliminar, 1);
       this.valorTotal = this.valorTotal - this.restarTotal[0].precio;
     },
+    formatoMexico(number) {
+      const exp = /(\d)(?=(\d{3})+(?!\d))/g;
+      const rep = "$1.";
+      let arr = number.toString().split(".");
+      arr[0] = arr[0].replace(exp, rep);
+      return arr[1] ? arr.join(".") : arr[0];
+    },
   },
   components: {
-    PruebasComponente,
     ElegirProducto,
   },
 };

@@ -1,22 +1,46 @@
 <template>
-  <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-md m-5">
+  <div
+    class="overflow-x-auto rounded-lg border dark:border-gray-600 border-gray-200 shadow-md m-5"
+  >
     <table
-      class="flex-col table-auto w-full border-collapse bg-white text-left text-sm text-gray-500"
+      class="flex-col table-auto w-full border-collapse bg-white dark:bg-gray-800 text-left text-sm text-gray-500"
     >
       <thead class="bg-gray-50">
-        <tr>
-          <th scope="col" class="px-6 py-4 font-medium text-gray-900">
+        <tr class="dark:bg-gray-700">
+          <th
+            scope="col"
+            class="px-6 py-4 font-medium text-gray-900 dark:text-white"
+          >
             Cliente
           </th>
-          <th scope="col" class="px-6 py-4 font-medium text-gray-900">Fecha</th>
-          <th scope="col" class="px-6 py-4 font-medium text-gray-900">
+          <th
+            scope="col"
+            class="px-6 py-4 font-medium text-gray-900 dark:text-white"
+          >
+            Fecha
+          </th>
+          <th
+            scope="col"
+            class="px-6 py-4 font-medium text-gray-900 dark:text-white"
+          >
             Cantidad
           </th>
-          <th scope="col" class="px-6 py-4 font-medium text-gray-900">Total</th>
-          <th scope="col" class="px-6 py-4 font-medium text-gray-900">
+          <th
+            scope="col"
+            class="px-6 py-4 font-medium text-gray-900 dark:text-white"
+          >
+            Total
+          </th>
+          <th
+            scope="col"
+            class="px-6 py-4 font-medium text-gray-900 dark:text-white"
+          >
             Referencia de venta
           </th>
-          <th scope="col" class="px-6 py-4 font-medium text-gray-900">
+          <th
+            scope="col"
+            class="px-6 py-4 font-medium text-gray-900 dark:text-white"
+          >
             Ver factura
           </th>
         </tr>
@@ -24,15 +48,17 @@
       <tbody
         v-for="(venta, index) in guardarId"
         :key="index"
-        class="divide-y divide-gray-100 border-t border-gray-100"
+        class="divide-y divide-gray-100 border-t dark:border-gray-600 border-gray-100"
       >
-        <tr class="hover:bg-gray-50">
+        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
           <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
             <div class="text-sm">
-              <div class="font-medium text-gray-700">
+              <div class="font-medium text-gray-700 dark:text-slate-200">
                 {{ venta.nombrecliente }}
               </div>
-              <div class="text-gray-400">C.C {{ venta.identificacion }}</div>
+              <div class="text-gray-400 dark:text-slate-400">
+                C.C {{ venta.identificacion }}
+              </div>
             </div>
           </th>
           <td class="px-6 py-4">
@@ -42,16 +68,18 @@
               {{ venta.fecha }}
             </div>
           </td>
-          <td class="px-6 py-4">{{ venta.cantidad }}</td>
+          <td class="px-6 py-4 dark:text-slate-200">{{ venta.cantidad }}</td>
           <td class="px-6 py-4">
             <span
               class="inline-flex items-center gap-1 rounded-full bg-green-50 px-2 py-1 text-xs font-semibold text-green-600"
             >
               <span class="text-green-700">$</span>
-              {{ venta.total }}
+              {{ formatoMexico(venta.total) }}
             </span>
           </td>
-          <td class="px-6 py-4 flex justify-center items-center">
+          <td
+            class="px-6 py-4 flex justify-center items-center dark:text-slate-200"
+          >
             {{ venta.id_venta }}
           </td>
           <td class="px-6 py-4">
@@ -124,6 +152,15 @@ export default {
       this.ventas[Posicion].total = totalVenta;
       this.guardarId.push(this.ventas[Posicion]);
     });
+  },
+  methods: {
+    formatoMexico(number) {
+      const exp = /(\d)(?=(\d{3})+(?!\d))/g;
+      const rep = "$1.";
+      let arr = number.toString().split(".");
+      arr[0] = arr[0].replace(exp, rep);
+      return arr[1] ? arr.join(".") : arr[0];
+    },
   },
 };
 </script>
